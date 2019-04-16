@@ -4,9 +4,32 @@ Bundler.require
 
 # lignes qui appellent les fichiers lib/user.rb et lib/event.rb
 # comme ça, tu peux faire User.new dans ce fichier d'application. Top.
-require_relative 'lib/user'
-require_relative 'lib/event'
+require_relative 'lib/game'
+require_relative 'lib/playeur'
 
+playeur1 = Playeur.new("lopez")
+playeur2 = Playeur.new("Slut")
 
-# Maintenant c'est open bar pour tester ton application. Tous les fichiers importants sont chargés
-# Tu peux faire User.new, Event.new, binding.pry, User.all, etc.
+puts "Voici l'état de nos joueurs !!!"
+puts "    -------------------"
+print playeur1.show_stat
+print playeur2.show_stat 
+puts "-----------------------------"
+puts " "
+puts "QUE LE COMBAT COMMENCE !!!!"
+puts" "
+while playeur1.life_point > 0 || playeur2.life_point > 0
+    playeur1.attack(playeur2)
+    if (playeur2.life_point <= 0 ) 
+        puts "lol"
+        break
+    end
+    playeur2.attack(playeur1)
+    if (playeur1.life_point <= 0 ) 
+        puts "lol"
+        break
+    end
+    puts ""
+    puts playeur2.show_stat , playeur1.show_stat
+     
+end

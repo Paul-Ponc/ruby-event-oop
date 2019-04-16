@@ -1,0 +1,1 @@
+This is little battle royal to learn how work POO in ruby
